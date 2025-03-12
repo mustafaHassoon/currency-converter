@@ -6,27 +6,16 @@ import { CurrencySelect } from "./CurrencySelect";
 import { ValueInput } from "./ValueInput";
 
 export const CurrencyConverter: React.FC = () => {
-  const { state, dispatch } = useCurrencyContext();
+  const { state, dispatch, lastUpdated } = useCurrencyContext();
 
   const handleAmountChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const newAmount = event.target.value;
-    dispatch({ type: "SET_AMOUNT_FROM", payload: newAmount });
+    dispatch({ type: "SET_AMOUNT_FROM", payload: event.target.value });
   };
 
   const handleConvertedAmountChange = (
     event: ChangeEvent<HTMLInputElement>
   ) => {
-    const newConvertedAmount = event.target.value;
-    dispatch({ type: "SET_AMOUNT_TO", payload: newConvertedAmount });
-
-    const newRecord = {
-      fromCurrency: state.fromCurrency,
-      toCurrency: state.toCurrency,
-      amount: state.amount,
-      convertedAmount: newConvertedAmount,
-      date: new Date().toISOString(),
-    };
-    dispatch({ type: "ADD_EXCHANGE_RECORD", payload: newRecord });
+    dispatch({ type: "SET_AMOUNT_TO", payload: event.target.value });
   };
 
   return (
@@ -40,7 +29,10 @@ export const CurrencyConverter: React.FC = () => {
         }}
       >
         <Typography variant="h5" sx={{ mb: 3 }}>
-          Währungsumtausch
+          Currency Exchange
+        </Typography>
+        <Typography variant="caption" sx={{ mb: 2, color: "gray" }}>
+          Last Updated: {lastUpdated || "Fetching..."}
         </Typography>
         <Grid container spacing={2}>
           <Grid item xs={12}>
