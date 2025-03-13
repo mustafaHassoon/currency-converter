@@ -1,6 +1,6 @@
-const ACCESS_KEY = process.env.EXCHANGE_API_KEY as string;
-const RATES_API_URL = process.env.RATES_API_URL as string;
-const CURRENCY_API_URL = process.env.CURRENCY_API_URL as string;
+const ACCESS_KEY = process.env.NEXT_PUBLIC_EXCHANGE_API_KEY as string;
+const RATES_API_URL = process.env.NEXT_PUBLIC_RATES_API_URL as string;
+const CURRENCY_API_URL = process.env.NEXT_PUBLIC_CURRENCY_API_URL as string;
 
 interface ExchangeRatesResponse {
   success: boolean;
