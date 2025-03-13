@@ -1,6 +1,6 @@
-const ACCESS_KEY = "84d44ebe787c90781987cf6285bd2d2a";
-const RATES_API_URL = "http://api.exchangeratesapi.io/v1/latest";
-const CURRENCY_API_URL = "http://openexchangerates.org/api/currencies.json";
+const ACCESS_KEY = process.env.EXCHANGE_API_KEY as string;
+const RATES_API_URL = process.env.RATES_API_URL as string;
+const CURRENCY_API_URL = process.env.CURRENCY_API_URL as string;
 
 interface ExchangeRatesResponse {
   success: boolean;
