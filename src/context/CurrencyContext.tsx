@@ -164,7 +164,7 @@ export const CurrencyProvider = ({ children }: { children: ReactNode }) => {
 
     const interval = setInterval(() => {
       fetchAndSetRates();
-    }, 3600000); // Fetch rates every 1 hour
+    }, 72000000); // Fetch rates every 20 hours
 
     return () => clearInterval(interval);
   }, []);
